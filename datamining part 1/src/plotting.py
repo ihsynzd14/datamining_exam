@@ -9,10 +9,9 @@ def save_plot(fig, filename):
     Save a matplotlib figure to the report/images directory.
     Useful for including in the LaTeX report.
     """
-    if not os.path.exists(IMAGE_DIR):
-        os.makedirs(IMAGE_DIR)
-        
     filepath = os.path.join(IMAGE_DIR, filename)
+    os.makedirs(os.path.dirname(filepath), exist_ok=True)
+    
     fig.savefig(filepath, bbox_inches='tight', dpi=300)
     print(f"Plot saved to: {filepath}")
 
